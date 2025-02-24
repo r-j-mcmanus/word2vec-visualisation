@@ -9,7 +9,7 @@ def plot_word_vectors():
     # Load pre-trained Word2Vec model
     model = api.load('word2vec-google-news-300') # much bigger model
     
-    print("Enter words separated by commas e.g. hello, world . Close the generated plot to test a new set of words.")
+    print("Enter at least three words separated by commas e.g. hello, good, world . Close the generated plot to test a new set of words.")
     
     while True:
         words = input("Enter a words: ")
@@ -21,6 +21,9 @@ def plot_word_vectors():
         
         if len(valid_words) == 0:
             print("No valid words found in the model.")
+            continue
+        if len(valid_words) < 3:
+            print("Please enter more than 3 words.")
             continue
         
         # Perform PCA to reduce dimensions to 3
